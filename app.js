@@ -4,6 +4,9 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 
+app.set('port', process.env.PORT || 3000);
+var port = Number(process.env.PORT || 3000);
+
 app.get('/', (req, res) => {
   fs.readFile('./index.html', (err, html) => res.end(html));
 });
@@ -42,4 +45,4 @@ app.get('/vids/:movieName', (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log('API on port 3000'));
+app.listen(port, () => console.log('API on port' + port));
